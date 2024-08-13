@@ -1,0 +1,24 @@
+:root{
+	--color-brown: #755A57;
+	--color-brown-25:#523f3d;
+
+	--color-red: #FF0000;
+	--color-red-25: #9E172E;
+	--color-red-50: #9E172EFF;
+
+	--color-yellow: #FEFE22;
+	--color-yellow-25: #CCA300;
+	
+	--color-green: #00FF1A;
+	--color-green-25: #1AC422;
+	--color-green-50: #124F15;
+
+	--color-blue-25: #3E5F8A;
+
+	--color-black: #000000;
+	
+	--color-white: #ffffff;
+	--color-white-10: #C0C0C0;
+	--color-white-25: #808080;
+	--color-white-50: #A9A9A9;
+}

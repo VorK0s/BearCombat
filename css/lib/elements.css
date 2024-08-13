@@ -1,0 +1,25 @@
+.emt {
+    position: absolute;
+    display: block;
+    width: 400px;
+    height: 750px;
+    background-color: var(--color-white);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    border-radius: 20px;
+    padding: 5px 10px;
+    z-index: 999;
+    top: calc(50% - 380px);
+    left: calc(50% - 210px);
+}
+
+.emt__title {
+	text-align: center;
+	border-bottom: solid 2px var(--color-black);
+}
+.emt__title-min {
+	border-bottom: solid 1px var(--color-black);
+	width: 200px;
+	margin: 0 auto;
+	text-align: center;
+	font-size: 13px;
+}

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>BearCombat</title>
+		<link rel="stylesheet" type="text/css" href="css/lib/colors.css">
+		<link rel="stylesheet" type="text/css" href="css/lib/buttons.css">
+		<link rel="stylesheet" type="text/css" href="css/lib/elements.css">
+		<link rel="stylesheet" type="text/css" href="css/lib/images.css">
+		<link rel="stylesheet" type="text/css" href="css/src/global.css">
+	</head>
+	<body>
+		<div class="backstage">
+			
+		</div>
+
+		<main class="main">
+			<div class="stats">
+				<div class="level">
+					<div class="lvl" id="lvl">
+						0 LVL
+					</div>
+				</div>
+
+				<div class="coins">
+					<div class="coinsCount" id="coinsCount">
+						0
+					</div>
+				</div>
+			</div>
+
+			<div class="coinArea">
+				<div class="clickCoin" id="clickCoin">
+					<img src="img/coins/defaultBear.png"
+					class="coin skin default hidden" alt="дефолтный медведь" id="img__default">
+					<img src="img/coins/broBear.png"
+					class="coin skin bro hidden" alt="брутальный медведь" id="img__bro">
+					<img src="img/coins/cosplayerBear.png"
+					class="coin skin cosplayer hidden" alt="косплейщица медведица" id="img__cosplayer">
+					<img src="img/coins/minerBear.png"
+					class="coin skin miner hidden" alt="шахтёр медведь" id="img__miner">
+					<img src="img/coins/houseWorkerBear.png"
+					class="coin skin maid hidden" alt="горничная медведица" id="img__maid">
+					<img src="img/coins/businessManBear.png"
+					class="coin skin business hidden" alt="бизнесмен медведь" id="img__businessMan">
+				</div>
+			</div>
+
+			<div class="buttons-down">
+				<button class="btn down shop" id="shop">
+					Магазин
+				</button>
+				<button class="btn down missions" id="tasks">
+					Задания
+				</button>
+				<button class="btn down reset" id="reset">
+					Сброс
+				</button>
+				<button class="btn down promo" id="promo">
+					Промо
+				</button>
+			</div>
+
+			<div class="elements">
+				<div class="emt emt-shop hide" id="shop__wind">
+					<div class="btnExit" id="btnExit"><h2>X</h2></div>
+
+					<div class="emt__title">
+						<h2>МАГАЗИН</h2> 
+					</div>
+
+					<div class="skins emt__title-min">
+						<h3>СКИНЫ</h3>
+					</div>
+
+					<div class="products">
+						<div class="product skin" id="skin__default">
+							<div class="product__title">
+								<h3>Обычный медведь</h3>
+							</div>
+							<div class="product__img">
+								<img src="img/coins/defaultBear.png" 
+								class="img__mini" alt="обычный медведь">
+							</div>
+							<div class="product__desc">
+								<p>мишка зелёный вкусный гумибер мишка зелёный
+								вкусный гумибер</p>
+							</div>
+							<div class="product__state product__purchased" id="equiped__default">
+								<span class="product__cost">0 МёдоБаксов</span>
+								<span class="product__equip">Экипировать</span>
+								<span class="product__selected">Экипировано</span>
+							</div>
+						</div>
+
+						<div class="product skin" id="skin__bro">
+							<div class="product__title">
+								<h3>брутальный медведь</h3>
+							</div>
+							<div class="product__img">
+								<img src="img/coins/broBear.png"
+								class="img__mini" alt="брутальный медведь">
+							</div>
+							<div class="product__desc">
+								<p>мишка зелёный вкусный гумибер мишка зелёный
+								вкусный гумибер</p>
+							</div>
+							<div class="product__state" id="equiped__bro">
+								<span class="product__cost">300 МБ</span>
+								<span class="product__equip">Экипировать</span>
+								<span class="product__selected">Экипировано</span>
+							</div>
+						</div>
+
+						<div class="product skin" id="skin__cosplayer">
+							<div class="product__title">
+								<h3>косплейщица медведица</h3>
+							</div>
+							<div class="product__img">
+								<img src="img/coins/cosplayerBear.png" 
+								class="img__mini" alt="дефолтный медведь">
+							</div>
+							<div class="product__desc">
+								<p>мишка зелёный вкусный гумибер мишка зелёный
+								вкусный гумибер</p>
+							</div>
+							<div class="product__state" id="equiped__cosplay">
+								<span class="product__cost">2 000 МБ</span>
+								<span class="product__equip">Экипировать</span>
+								<span class="product__selected">Экипировано</span>
+							</div>
+						</div>
+
+						<div class="product skin" id="skin__miner">
+							<div class="product__title">
+								<h3>копатель медведь</h3>
+							</div>
+							<div class="product__img">
+								<img src="img/coins/minerBear.png" 
+								class="img__mini" alt="копатель медведь">
+							</div>
+							<div class="product__desc">
+								<p>мишка зелёный вкусный гумибер мишка зелёный
+								вкусный гумибер</p>
+							</div>
+							<div class="product__state" id="equiped__miner">
+								<span class="product__cost">5 500 МБ</span>
+								<span class="product__equip">Экипировать</span>
+								<span class="product__selected">Экипировано</span>
+							</div>
+						</div>
+
+						<div class="product skin" id="skin__maid">
+							<div class="product__title">
+								<h3>горничная медведица</h3>
+							</div>
+							<div class="product__img">
+								<img src="img/coins/houseWorkerBear.png" 
+								class="img__mini" alt="дефолтный медведь">
+							</div>
+							<div class="product__desc">
+								<p>мишка зелёный вкусный гумибер мишка зелёный
+								вкусный гумибер</p>
+							</div>
+							<div class="product__state" id="equiped__maid">
+								<span class="product__cost">45 000 МБ</span>
+								<span class="product__equip">Экипировать</span>
+								<span class="product__selected">Экипировано</span>
+							</div>
+						</div>
+
+						<div class="product skin" id="skin__businessMan">
+							<div class="product__title">
+								<h3>бизнесмен медведь</h3>
+							</div>
+							<div class="product__img">
+								<img src="img/coins/businessManBear.png" 
+								class="img__mini" alt="бизнесмен медведь">
+							</div>
+							<div class="product__desc">
+								<p>мишка зелёный вкусный гумибер мишка зелёный
+								вкусный гумибер</p>
+							</div>
+							<div class="product__state" id="equiped__businessMan">
+								<span class="product__cost">100 000 МБ</span>
+								<span class="product__equip">Экипировать</span>
+								<span class="product__selected">Экипировано</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="emt emt-tasks hide" id="tasks__wind">
+					<div class="btnExit" id="btnExit2"><h2>X</h2></div>
+					<div class="emt__title">
+						<h2>ЗАДАНИЯ</h2>
+					</div>
+					<div class="emt__title-min">
+						<h3>ЕЖЕНЕДЕЛЬНЫЕ</h3>
+					</div>
+					<div class="tasks">
+						<div class="task task-week task1__week task__rare" id="task1__week">
+							<div class="task__img">
+								<img src="img/coins/businessManBear.png" 
+								class="img__smini" alt="бизнесмен медведь">
+							</div>
+							<div class="task__desc">
+								<p>
+									Подпишитесь на этот канал, чтобы научиться смотреть видео
+								</p>
+							</div>
+							<div class="task__reward">
+								<h2> 2 000</h2>
+								<div class="btnReward" id="claim__reward1">
+									<span><b>ЗАБРАТЬ</b></span>
+								</div>
+							</div>
+						</div>
+						<div class="task task-week task2__week" id="task2__week">
+							<div class="task__img">
+								<img src="img/coins/businessManBear.png" 
+								class="img__smini" alt="бизнесмен медведь">
+							</div>
+							<div class="task__desc">
+								<p>
+									Подпишитесь на этот канал, чтобы научиться смотреть видео
+								</p>
+							</div>
+							<div class="task__reward">
+								<h2> 2 000</h2>
+								<div class="btnReward" id="claim__reward2">
+									<span><b>ЗАБРАТЬ</b></span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="emt__title-min">
+						<h3>ЕЖЕДНЕВНЫЕ</h3>
+					</div>
+					<div class="tasks">
+						<div class="task task-day task1__day" id="task1__day">
+							<div class="task__img">
+								<img src="img/coins/businessManBear.png" 
+								class="img__smini" alt="бизнесмен медведь">
+							</div>
+							<div class="task__desc">
+								<p>
+									Подпишитесь на этот канал, чтобы научиться смотреть видео
+								</p>
+							</div>
+							<div class="task__reward">
+								<h2>2 000</h2>
+								<div class="btnReward" id="claim__reward3">
+									<span><b>ЗАБРАТЬ</b></span>
+								</div>      
+							</div >
+						</div>
+						<div class="task task-day task2__day" id="task2__day">
+							<div class="task__img">
+								<img src="img/coins/businessManBear.png" 
+								class="img__smini" alt="бизнесмен медведь">
+							</div>
+							<div class="task__desc">
+								<p>
+									Подпишитесь на этот канал, чтобы научиться смотреть видео
+								</p>
+							</div>
+							<div class="task__reward">
+								<h2> 2 000</h2>
+								<div class="btnReward" id="claim__reward4">
+								<span><b>ЗАБРАТЬ</b></span>
+								</div>
+							</div>
+						</div>
+						<div class="task task-day task3__day" id="task3__day">
+							<div class="task__img">
+								<img src="img/coins/businessManBear.png" 
+								class="img__smini" alt="бизнесмен медведь">
+							</div>
+							<div class="task__desc">
+								<p>
+									Подпишитесь на этот канал, чтобы научиться смотреть видео
+								</p>
+							</div>
+							<div class="task__reward">
+								<h2> 2 000</h2>
+								<div class="btnReward" id="claim__reward5">
+									<span><b>ЗАБРАТЬ</b></span>
+								</div>
+							</div>
+						</div>
+						<div class="task task-day task4__day" id="task4__day">
+							<div class="task__img">
+								<img src="img/coins/businessManBear.png" 
+								class="img__smini" alt="бизнесмен медведь"
+								id="img">
+							</div>
+							<div class="task__desc">
+								<p>
+									Подпишитесь на этот канал, чтобы научиться смотреть видео
+								</p>
+							</div>
+							<div class="task__reward">
+								<h2>2 000</h2>
+								<div class="btnReward" id="claim__reward6">
+								<span><b>ЗАБРАТЬ</b></span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--<div class="emt emt-reset">
+					
+				</div> -->
+				<div class="emt emt-promo hide" id="promo__wind">
+					<div class="btnExit" id="btnExit3"><h2>X</h2></div>
+					<div class="emt__title">
+						<h2>ПРОМОКОДЫ</h2>
+					</div>
+					<form class="form">
+						<div class="inputBox">
+							<label for="promo">
+								Введите промокод
+							</label>
+                        	<input type="text" class="promoWind" name="promo" placeholder="..." id="promocode__wind">
+                        	<div class="incorrectPromo hide" id="incorrectPromo"> 
+                        		<h2>
+                        		Такого промокода не существует!
+                        		</h2>
+                        	</div>
+                        	<div class="correctPromo" id="correctPromo"> 
+                        		<h2>
+                        		Успешно!
+                        		</h2>
+                        	</div>
+                    	</div>
+                    	<div class="inputBox">
+                        	<input class="promoSubmit btnSubmit" type="submit" value="ПРИНЯТЬ" id="promo__submit">
+                    	</div>
+                    </form>
+				</div> 
+			</div>
+
+
+		</main>
+		<script src="js/src/script.mjs"></script>
+		<script src="js/src/promocodes.mjs"></script>
+	</body>	
+</html>

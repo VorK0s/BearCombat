@@ -1,0 +1,263 @@
+body {
+	margin: 0 auto;
+	padding: 0;
+	background-color: var(--color-brown);
+	overflow: hidden;
+}
+/*-------------- main --------------*/
+.main {
+	height: 100vh;
+	width: 500px;
+	box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+	background-color: var(--color-brown-25);
+	margin: 0 auto;
+}
+.stats {
+	padding: 20px;
+}
+.level {
+	height: 50px;
+	width: 150px;
+	box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+	border-radius: 20px;
+	background-color: var(--color-white-50);
+	color: var(--color-white);
+	border: solid 2px var(--color-black);
+	cursor: default;
+}
+.lvl {
+	padding-top: 15px;
+	text-align: center;
+}
+.coins {
+	height: 50px;
+	width: 400px;
+	box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+	border-radius: 20px;
+	background-color: var(--color-white-50);
+	color: var(--color-white);
+	margin: 0 auto;
+	margin-top: 100px;
+	border: solid 2px var(--color-black);
+	cursor: default;
+}
+.coinsCount {
+	padding-top: 10px;
+	text-align: center;
+	font-size: 25px;
+}
+.coinArea {
+	margin: 50px auto;
+	width: min-content;
+}
+.clickCoin {
+	width: 200px;
+	height: 200px;
+	background-color: white;
+	box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+	border-radius: 50%;
+	border: solid 2px var(--color-black);
+	z-index: -1;
+}
+.clickCoin:hover {
+	cursor: pointer;
+}
+.coin {
+	width: 200px;
+	position: fixed;
+}
+.buttons-down {
+	position: fixed;
+	width: inherit;
+	margin: 0 auto;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 0 25px;
+	bottom: -75px;
+}
+
+/*-------------- products --------------*/
+
+.products {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+.product {
+	width: 115px;
+	padding: 5px;
+	margin: 5px 0;
+	border: solid 2px var(--color-black);
+	border-radius: 10px;
+	transition: 0.6s;	
+}
+.product:hover {
+	cursor: pointer;
+	background-color: var(--color-white-10);
+	transition: 0.6s;
+}
+.product:has(.product__equiped) {
+	background: var(--color-white-10);
+}
+.product:has(.product__equiped) .product__img {
+	filter: brightness(50%);
+}
+
+.product:not(:has(.product__purchased)) {
+	background: var(--color-red-50);
+}
+
+.product:not(:has(.product__purchased)) .product__img {
+	filter: brightness(50%);
+}
+
+.product .product__title {
+	border-bottom: solid 2px var(--color-black);
+	text-transform: uppercase;
+	font-size: 10px;
+	text-align: center;
+}
+
+.product .product__img {
+	border-bottom: solid 2px var(--color-black);
+	transition: 0.6s;
+}
+.product:hover .product__img {
+	filter: brightness(50%);
+	transition: 0.6s;
+}
+
+.product .product__desc {
+	border-bottom: solid 2px var(--color-black);
+	font-size: 13px;
+}
+
+.product .product__state {
+	font-size: 13px;
+	font-weight: bold;
+	text-align: center;
+	color: var(--color-black);
+}
+.product .product__state .product__cost {
+	display: inline;
+}
+.product .product__state .product__equip {
+	display: none;
+}
+.product .product__state .product__selected {
+	display: none;
+}
+
+.product .product__state.product__purchased .product__equip{
+	display: inline;
+}
+
+.product .product__state.product__equiped .product__equip{
+	display: none;
+}
+.product .product__state.product__equiped .product__selected {
+	display: inline;
+	color: var(--color-green-25);
+}
+
+.product .product__state.product__purchased .product__cost,
+.product .product__state.product__equiped .product__cost {
+	display: none;
+}
+
+
+/*-------------- tasks --------------*/
+
+.tasks {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+.task {
+	margin: 10px auto 0;
+	width: 350px;
+	max-height: 70px;
+	border: solid 2px var(--color-black);
+	border-radius: 15px;
+}
+.task .task__img {
+	width: 60px;
+	border-right: solid 2px var(--color-black);
+}
+.task .task__desc {
+	position: relative;
+	width: 200px;
+	margin-left: 70px;
+	top: calc(50% - 115px);
+}
+.task .task__reward {
+	position: relative;
+	padding-left: 15px;
+	border-left: solid 2px var(--color-black);
+	margin-left: 260px;
+	top: calc(50% - 193px);
+	padding-top: 2px;
+	padding-bottom: 3px;
+}
+.task .task__reward h2 {
+	margin: 5px 0 0 5px;
+}
+.task .task1__week .task__default, .task1__week {
+	background-color: var(--color-blue-25);
+}
+.task .task1__week .task__rare, .task1__week {
+	background-color: var(--color-blue-25);
+}
+.task .task1__week .task__legendary, .task1__week {
+	background-color: var(--color-yellow-25);
+}
+/*-------------- input --------------*/
+.form {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	margin-top: 15px;
+}
+.form .inputBox {
+  	position: relative;
+  	margin: 0 auto;
+}
+
+.form .inputBox .promoWind {
+  	background: #fff;
+  	padding: 10px;
+  	border-radius: 11px;
+  	width: 200px;
+  	margin-top: 50px;
+}
+
+.form .inputBox label {
+  	position: absolute;
+  	top: -10px;
+  	left: 10px;
+  	background: #fff;
+  	padding: 0 5px;
+  	margin-top: 50px;
+}
+.form .inputBox .incorrectPromo {
+	text-align: center;
+	font-size: 10px;
+	color: var(--color-red);
+}
+.form .inputBox .correctPromo {
+	text-align: center;
+	font-size: 10px;
+	color: var(--color-green);
+}
+.form .inputBox .promoSubmit {
+	margin-top: 25px;
+}
+/*-------------- others --------------*/
+
+.hide {
+	display: none;
+}
+.hidden {
+	display: none;
+}
