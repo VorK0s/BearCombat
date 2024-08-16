@@ -203,13 +203,13 @@ body {
 .task .task__reward h2 {
 	margin: 5px 0 0 5px;
 }
-.task .task1__week .task__default, .task1__week {
+.task.task__default {
+	background-color: var(--color-white);
+}
+.task.task__rare {
 	background-color: var(--color-blue-25);
 }
-.task .task1__week .task__rare, .task1__week {
-	background-color: var(--color-blue-25);
-}
-.task .task1__week .task__legendary, .task1__week {
+.task.task__legendary {
 	background-color: var(--color-yellow-25);
 }
 /*-------------- input --------------*/

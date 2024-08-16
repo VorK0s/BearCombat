@@ -191,7 +191,7 @@
 						</div>
 					</div>
 				</div>
-
+ 				<!--
 				<div class="emt emt-tasks hide" id="tasks__wind">
 					<div class="btnExit" id="btnExit2"><h2>X</h2></div>
 					<div class="emt__title">
@@ -201,7 +201,7 @@
 						<h3>ЕЖЕНЕДЕЛЬНЫЕ</h3>
 					</div>
 					<div class="tasks">
-						<div class="task task-week task1__week task__rare" id="task1__week">
+						<div class="task task-week task__rare" id="task1__week">
 							<div class="task__img">
 								<img src="img/coins/businessManBear.png" 
 								class="img__smini" alt="бизнесмен медведь">
@@ -218,7 +218,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="task task-week task2__week" id="task2__week">
+						<div class="task task-week" id="task2__week">
 							<div class="task__img">
 								<img src="img/coins/businessManBear.png" 
 								class="img__smini" alt="бизнесмен медведь">
@@ -229,7 +229,7 @@
 								</p>
 							</div>
 							<div class="task__reward">
-								<h2> 2 000</h2>
+								<h2>2 000</h2>
 								<div class="btnReward" id="claim__reward2">
 									<span><b>ЗАБРАТЬ</b></span>
 								</div>
@@ -311,9 +311,27 @@
 						</div>
 					</div>
 				</div>
-				<!--<div class="emt emt-reset">
-					
-				</div> -->
+				переработка
+				-->
+
+				<div class="emt emt-reset hide" id="reset__wind">
+					<div class="btnExit" id="btnExit4"><h2>X</h2></div>
+					<div class="emt__title">
+						<h2>СБРОС</h2>
+					</div>
+					<div class="btnReset" id="res__progress">
+						<h2 id="reset_text">СБРОСИТЬ</h2>
+					</div>
+					<form class="form hidden"  id="reset_form">
+						<div class="inputBox">
+							<label>
+								Введите "reset"
+							</label>
+							<input type="text" class="promoWind" placeholder="..." id="reset_input">
+						</div>
+					</form>
+				</div>
+
 				<div class="emt emt-promo hide" id="promo__wind">
 					<div class="btnExit" id="btnExit3"><h2>X</h2></div>
 					<div class="emt__title">
@@ -321,7 +339,7 @@
 					</div>
 					<form class="form">
 						<div class="inputBox">
-							<label for="promo">
+							<label>
 								Введите промокод
 							</label>
                         	<input type="text" class="promoWind" name="promo" placeholder="..." id="promocode__wind">

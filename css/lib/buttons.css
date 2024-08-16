@@ -9,6 +9,11 @@
 	border: solid 2px var(--color-black);
 	transition: 0.6s;
 }
+.btn:hover {
+	transition: 0.6s;
+	cursor: pointer;
+	margin-top: -30px;
+}
 .btnExit {
 	background-color: var(--color-red);
 	width: 50px;
@@ -24,6 +29,11 @@
 	padding-top: 10px;
 	margin: 0;
 }
+.btnExit:hover {
+	background-color: var(--color-red-25);
+	color: var(--color-white-25);
+	transition: 0.6s;
+}
 .btnReward {
 	background-color: var(--color-yellow);
 	width: 60px;
@@ -36,6 +46,11 @@
 }
 .btnReward span {
 	font-size: 10px;
+}
+.btnReward:hover {
+	cursor: pointer;
+	background-color: var(--color-yellow-25);
+	transition: 0.6s;
 }
 .btnSubmit {
     padding: 10px;
@@ -51,18 +66,21 @@
     background-color: var(--color-green-50);
     color: var(--color-green-25);
 }
-.btn:hover {
-	transition: 0.6s;
+
+.btnReset {
+	width: 70%;
+	text-align: center;
+	margin: 150px auto 0;
+	padding: 10px;
+	background-color: var(--color-white-25);
+	color: var(--color-white-10);
+	font-weight: 600;
+	font-size: 1.2em;
+	letter-spacing: 0.05em;
+	border-radius: 10px;
 	cursor: pointer;
-	margin-top: -30px;
 }
-.btnExit:hover {
+.btnReset:hover {
 	background-color: var(--color-red-25);
-	color: var(--color-white-25);
-	transition: 0.6s;
-}
-.btnReward:hover {
-	cursor: pointer;
-	background-color: var(--color-yellow-25);
-	transition: 0.6s;
+	color: var(--color-red-50);
 }

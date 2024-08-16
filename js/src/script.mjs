@@ -7,21 +7,27 @@ set_visual_skin();
 let shop = document.getElementById('shop');
 let tasks = document.getElementById('tasks');
 let promo = document.getElementById('promo');
+let reset = document.getElementById('reset');
 
 let btnExit = document.getElementById('btnExit');
 let btnExit2 = document.getElementById('btnExit2');
 let btnExit3 = document.getElementById('btnExit3');
+let btnExit4 = document.getElementById('btnExit4');
 
 let windShop = document.getElementById('shop__wind');
 let windTasks = document.getElementById('tasks__wind');
 let windPromo = document.getElementById('promo__wind');
+let windReset = document.getElementById('reset__wind');
 
 shop.addEventListener("click", toggleShop);
 btnExit.addEventListener("click", toggleShop); 
-tasks.addEventListener("click", toggleTasks);
-btnExit2.addEventListener("click", toggleTasks); 
+//tasks.addEventListener("click", toggleTasks);
+//btnExit2.addEventListener("click", toggleTasks);
 promo.addEventListener("click", togglePromo);
-btnExit3.addEventListener("click", togglePromo); 
+btnExit3.addEventListener("click", togglePromo);
+reset.addEventListener("click", toggleReset);
+btnExit4.addEventListener("click", toggleReset);
+
 
 function toggleShop() {
     img__default.classList.toggle("hide");
@@ -38,7 +44,12 @@ function toggleTasks() {
 function togglePromo() {
 	img__default.classList.toggle("hide");
     img__bro.classList.toggle("hide");
-    windPromo.classList.toggle("hide");
+	windPromo.classList.toggle("hide");
+}
+function toggleReset() {
+	img__default.classList.toggle("hide");
+	img__bro.classList.toggle("hide");
+	windReset.classList.toggle("hide");
 }
 
 /*----------------- shop -----------------*/
@@ -290,62 +301,36 @@ let tasks2__day = document.getElementById('tasks2__day');
 let tasks3__day = document.getElementById('tasks3__day');
 let tasks4__day = document.getElementById('tasks4__day');
 
-let variant1__week = Math.floor(Math.random() * 7) + 1;
-let variant2__week =  Math.floor(Math.random() * 7) + 1;
+/*----------------- reset  -----------------*/
 
-console.log(variant1__week, variant2__week)
+let reset_btn = document.getElementById('res__progress');
+let conf_reset = document.getElementById('reset_text');
+let form_reset = document.getElementById('reset_form');
+let input_reset = document.getElementById('reset_input');
+let clicks_reset = 0;
 
-check_variant__weeks();
-
-function check_variant__weeks() {
-	if (variant1__week == 1 || variant2__week == 1) {
-		console.log("DEFAULT TASK | ОБЫЧНОЕ ЗАДАНИЕ 1500 МБ");
-	}
-	else if (variant1__week == 2 || variant2__week == 2) {
-		console.log("DEFAULT TASK | ОБЫЧНОЕ ЗАДАНИЕ 1500 МБ");
-	}
-	else if (variant1__week == 3 || variant2__week == 3) {
-		console.log("DEFAULT TASK | ОБЫЧНОЕ ЗАДАНИЕ 1500 МБ");
-	}
-	else if (variant1__week == 4 || variant2__week == 4) {
-		console.log("DEFAULT TASK | ОБЫЧНОЕ ЗАДАНИЕ 1500 МБ");
-	}
-	else if (variant1__week == 5 || variant2__week == 5) {
-		console.log("RARE TASK | РЕДКОЕ ЗАДАНИЕ 5500 МБ");
-	}
-	else if (variant1__week == 6 || variant2__week == 6) {
-		console.log("RARE TASK | РЕДКОЕ ЗАДАНИЕ 5500 МБ");
-	}
-	else if (variant1__week == 7 || variant2__week == 7)  {
-		console.log("LEGENDARY TASK | ЛЕГЕНДАРНОЕ ЗАДАНИЕ 15000 МБ");
-
-	}
-	else {
-		console.log("ОШИБКА | Такого не существует");
-	}
-	if (variant2__week == 1) {
-		console.log("DEFAULT TASK | ОБЫЧНОЕ ЗАДАНИЕ 1500 МБ");
-	}
-	else if (variant2__week == 2) {
-		console.log("DEFAULT TASK | ОБЫЧНОЕ ЗАДАНИЕ 1500 МБ");
-	}
-	else if (variant2__week == 3) {
-		console.log("DEFAULT TASK | ОБЫЧНОЕ ЗАДАНИЕ 1500 МБ");
-	}
-	else if (variant2__week == 4) {
-		console.log("DEFAULT TASK | ОБЫЧНОЕ ЗАДАНИЕ 1500 МБ");
-	}
-	else if (variant2__week == 5) {
-		console.log("RARE TASK | РЕДКОЕ ЗАДАНИЕ 5500 МБ");
-	}
-	else if (variant2__week == 6) {
-		console.log("RARE TASK | РЕДКОЕ ЗАДАНИЕ 5500 МБ");
-	}
-	else if (variant2__week == 7)  {
-		console.log("LEGENDARY TASK | ЛЕГЕНДАРНОЕ ЗАДАНИЕ 15000 МБ");
-
-	}
-	else {
-		console.log("ОШИБКА | Такого не существует");
+reset_btn.addEventListener("click", confirmReset);
+function confirmReset() {
+	if (clicks_reset == 0) {
+		conf_reset.textContent = "ТОЧНО??";
+		clicks_reset = 1;
+		console.log(clicks_reset);
+	} else if (clicks_reset == 1) {
+		conf_reset.textContent = "ВСЁ ОБДУМАЛ???";
+		clicks_reset = 2;
+	} else if (clicks_reset == 2) {
+		form_reset.classList.remove('hidden');
+		conf_reset.textContent = "СБРОСИТЬ";
+		console.log(form_reset);
+		if (input_reset.value === "reset") {
+			input_reset.readOnly = true;
+			input_reset.value = "Идёт сброс...";
+			localStorage.clear();
+			input_reset.value = "Успешно!";
+			window.location.reload();
+		}
+		else {
+			console.log("не, не сбросился");
+		}
 	}
 }
