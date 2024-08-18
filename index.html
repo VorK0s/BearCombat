@@ -342,28 +342,30 @@
 							<label>
 								Введите промокод
 							</label>
-                        	<input type="text" class="promoWind" name="promo" placeholder="..." id="promocode__wind">
+                        	<input type="text" class="promoWind" placeholder="..." id="promocode__wind">
                         	<div class="incorrectPromo hide" id="incorrectPromo"> 
                         		<h2>
                         		Такого промокода не существует!
                         		</h2>
                         	</div>
-                        	<div class="correctPromo" id="correctPromo"> 
+							<div class="enteredPromo hide" id="enteredPromo">
+								<h2>
+									Этот промокод уже был введён
+								</h2>
+							</div>
+                        	<div class="correctPromo hide" id="correctPromo">
                         		<h2>
                         		Успешно!
                         		</h2>
                         	</div>
                     	</div>
                     	<div class="inputBox">
-                        	<input class="promoSubmit btnSubmit" type="submit" value="ПРИНЯТЬ" id="promo__submit">
+							<div class="promoSubmit btnSubmit" id="promo__submit">ПРИНЯТЬ</div>
                     	</div>
                     </form>
 				</div> 
 			</div>
-
-
 		</main>
 		<script src="js/src/script.mjs"></script>
-		<script src="js/src/promocodes.mjs"></script>
-	</body>	
+	</body>
 </html>

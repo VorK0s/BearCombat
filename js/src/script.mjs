@@ -45,6 +45,9 @@ function togglePromo() {
 	img__default.classList.toggle("hide");
     img__bro.classList.toggle("hide");
 	windPromo.classList.toggle("hide");
+	correct.classList.add('hide');
+	incorrect.classList.add('hide');
+	promoInput.value = "";
 }
 function toggleReset() {
 	img__default.classList.toggle("hide");
@@ -230,7 +233,16 @@ let count = document.getElementById("coinsCount");
 const coin = document.getElementById("clickCoin");
 let num = 0;
 
-num = Number(localStorage.getItem('clicks'));
+if (localStorage.getItem('clicks')) {
+	let storedNum = Number(localStorage.getItem('clicks'));
+	if (!isNaN(storedNum)) {
+		num = storedNum;
+	} else {
+		num = 0;
+	}
+} else {
+	num = 0;
+}
 count.innerHTML = num;
 lvlCounter(num);
 
@@ -242,19 +254,19 @@ function counter() {
 	if (localStorage.getItem('skin') === '1') {
 		count.innerHTML = ++num;
 	} else if (localStorage.getItem('skin') === '2') {
-		num = num + 5;
+		num += 5;
 		count.innerHTML = num;
 	} else if (localStorage.getItem('skin') === '3') {
-		num = num + 15;
+		num += 15;
 		count.innerHTML = num;
 	} else if (localStorage.getItem('skin') === '4') {
-		num = num + 30;
+		num += 30;
 		count.innerHTML = num;
 	} else if (localStorage.getItem('skin') === '5') {
-		num = num + 60;
+		num += 60;
 		count.innerHTML = num;
 	} else if (localStorage.getItem('skin') === '6') {
-		num = num + 150;
+		num += 150;
 		count.innerHTML = num;
 	}
 	localStorage.setItem('clicks', num);
@@ -332,5 +344,75 @@ function confirmReset() {
 		else {
 			console.log("не, не сбросился");
 		}
+	}
+}
+
+/*----------------- promo  -----------------*/
+
+let promoInput = document.getElementById('promocode__wind');
+let promoSubmit = document.getElementById('promo__submit');
+let correct = document.getElementById('correctPromo');
+let incorrect = document.getElementById('incorrectPromo');
+let entered = document.getElementById('enteredPromo')
+
+let single_promo = [
+	{ 'promo': 'vorkos', 'clicks': 500},
+	{ 'promo': 'vladmayo', 'clicks': 1000},
+	{ 'promo': 'wetwix', 'clicks': 1000},
+	{ 'promo': 'A5Mine', 'clicks': 1000},
+	{ 'promo': 'RELEASE!', 'clicks': 2000},
+	{ 'promo': 'SDFMVBK8AB2M', 'clicks': 2500},
+	{ 'promo': 'SDFASVSSSGGD', 'clicks': 2500},
+	{ 'promo': 'ASKJLFNMVSAL', 'clicks': 2500},
+	{ 'promo': '394028NVSKKL', 'clicks': 2500},
+	{ 'promo': 'SZJGFLN7QNMF', 'clicks': 2500},
+	{ 'promo': 'FDVH8ASNVFLS', 'clicks': 2500},
+	{ 'promo': 'SAGJIO6732HM', 'clicks': 2500},
+]
+if (!localStorage.getItem('singlePromo')) {
+	localStorage.setItem('singlePromo', JSON.stringify(single_promo));
+}
+if (!localStorage.getItem('usedPromo')) {
+	localStorage.setItem('usedPromo', JSON.stringify([]));
+}
+promoSubmit.addEventListener("click", promocodes);
+
+function promocodes() {
+	const enteredPromo = promoInput.value.trim();
+	let storedPromos = JSON.parse(localStorage.getItem('singlePromo'));
+	let usedPromos = JSON.parse(localStorage.getItem('usedPromo'));
+	if (!usedPromos) {
+		usedPromos = [];
+	}
+	if (usedPromos.includes(enteredPromo)) {
+		console.log('Этот промокод уже был введён');
+		incorrect.classList.add('hide');
+		correct.classList.add('hide');
+		entered.classList.remove('hide');
+		return;
+	}
+	let promoIndex = storedPromos.findIndex(promoObj => promoObj.promo === enteredPromo);
+	if (promoIndex !== -1) {
+		let promo = storedPromos[promoIndex];
+		console.log('Промокод найден:', promo);
+		if (promo.clicks && !isNaN(promo.clicks)) {
+			storedPromos.splice(promoIndex, 1);
+			localStorage.setItem('singlePromo', JSON.stringify(storedPromos));
+			usedPromos.push(enteredPromo);
+			localStorage.setItem('usedPromo', JSON.stringify(usedPromos));
+			num += promo.clicks;
+			console.log('Монеты успешно добавлены:', promo.clicks, 'Текущий баланс:', num);
+			localStorage.setItem('clicks', num);
+			count.innerHTML = num;
+			correct.classList.remove('hide');
+			incorrect.classList.add('hide');
+			entered.classList.add('hide');
+		}
+	} else {
+		console.log('INCORRECT');
+		incorrect.classList.remove('hide');
+		correct.classList.add('hide');
+		entered.classList.add('hide');
+
 	}
 }

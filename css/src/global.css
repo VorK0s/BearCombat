@@ -245,6 +245,11 @@ body {
 	font-size: 10px;
 	color: var(--color-red);
 }
+.form .inputBox .enteredPromo {
+	text-align: center;
+	font-size: 10px;
+	color: var(--color-yellow-25);
+}
 .form .inputBox .correctPromo {
 	text-align: center;
 	font-size: 10px;
