@@ -1,0 +1,28 @@
+@media screen and (max-width: 500px) {
+    .main {
+        width: 100%;
+    }
+    .coins {
+        width: 100%;
+    }
+}
+@media screen and (max-width: 430px) {
+    .emt {
+        width: 100%;
+        margin-left: 45px;
+    }
+    .product {
+        width: 100px;
+        padding: 0;
+    }
+}
+@media screen and (max-width: 320px) {
+    .buttons-down {
+        gap: 0 10px;
+    }
+}
+@media screen and (max-width: 270px) {
+    .buttons-down {
+        gap: 0 1px;
+    }
+}

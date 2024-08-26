@@ -31,12 +31,11 @@ body {
 }
 .coins {
 	height: 50px;
-	width: 400px;
+	width: 100%;
 	box-shadow: 0 15px 35px rgba(0,0,0,0.5);
 	border-radius: 20px;
 	background-color: var(--color-white-50);
 	color: var(--color-white);
-	margin: 0 auto;
 	margin-top: 100px;
 	border: solid 2px var(--color-black);
 	cursor: default;
