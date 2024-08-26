@@ -167,50 +167,15 @@ body {
 }
 
 
-/*-------------- tasks --------------*/
-
-.tasks {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
+/*-------------- stats --------------*/
+.stats__wind .stat {
+	margin: 30px;
+	font-size: 20px;
+	padding-bottom: 35px;
+	border-bottom: solid 1px var(--color-black);
 }
-.task {
-	margin: 10px auto 0;
-	width: 350px;
-	max-height: 70px;
-	border: solid 2px var(--color-black);
-	border-radius: 15px;
-}
-.task .task__img {
-	width: 60px;
-	border-right: solid 2px var(--color-black);
-}
-.task .task__desc {
-	position: relative;
-	width: 200px;
-	margin-left: 70px;
-	top: calc(50% - 115px);
-}
-.task .task__reward {
-	position: relative;
-	padding-left: 15px;
-	border-left: solid 2px var(--color-black);
-	margin-left: 260px;
-	top: calc(50% - 193px);
-	padding-top: 2px;
-	padding-bottom: 3px;
-}
-.task .task__reward h2 {
-	margin: 5px 0 0 5px;
-}
-.task.task__default {
-	background-color: var(--color-white);
-}
-.task.task__rare {
-	background-color: var(--color-blue-25);
-}
-.task.task__legendary {
-	background-color: var(--color-yellow-25);
+.stats__wind .stat .working__stats {
+	margin-left: 5px;
 }
 /*-------------- input --------------*/
 .form {

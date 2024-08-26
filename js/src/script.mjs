@@ -5,7 +5,7 @@ let img__bro = document.getElementById('img__bro');
 set_visual_skin();
 
 let shop = document.getElementById('shop');
-let tasks = document.getElementById('tasks');
+let stats = document.getElementById('stats');
 let promo = document.getElementById('promo');
 let reset = document.getElementById('reset');
 
@@ -15,14 +15,14 @@ let btnExit3 = document.getElementById('btnExit3');
 let btnExit4 = document.getElementById('btnExit4');
 
 let windShop = document.getElementById('shop__wind');
-let windTasks = document.getElementById('tasks__wind');
+let windStats = document.getElementById('stats__wind');
 let windPromo = document.getElementById('promo__wind');
 let windReset = document.getElementById('reset__wind');
 
 shop.addEventListener("click", toggleShop);
 btnExit.addEventListener("click", toggleShop); 
-//tasks.addEventListener("click", toggleTasks);
-//btnExit2.addEventListener("click", toggleTasks);
+stats.addEventListener("click", toggleStats);
+btnExit2.addEventListener("click", toggleStats);
 promo.addEventListener("click", togglePromo);
 btnExit3.addEventListener("click", togglePromo);
 reset.addEventListener("click", toggleReset);
@@ -35,10 +35,10 @@ function toggleShop() {
     windShop.classList.toggle("hide");
 }
 
-function toggleTasks() {
+function toggleStats() {
     img__bro.classList.toggle("hide");
     img__default.classList.toggle("hide");
-    windTasks.classList.toggle("hide");
+    windStats.classList.toggle("hide");
 }
 
 function togglePromo() {
@@ -202,7 +202,6 @@ function update_bal() {
 	count.innerHTML = upd;
 }
 function set_visual_skin() {
-	// Устанавливает внешний вид выбранного скина медведя
 	let skin_selected_id = localStorage.getItem('skin')
 
 	img__default.classList.add('hidden');
@@ -226,7 +225,6 @@ function set_visual_skin() {
 		img__businessMan.classList.remove('hidden');
 	}
 }
-
 /*----------------- counters -----------------*/
 
 let count = document.getElementById("coinsCount");
@@ -245,12 +243,15 @@ if (localStorage.getItem('clicks')) {
 }
 count.innerHTML = num;
 lvlCounter(num);
-
+let all_clicks = Number(localStorage.getItem('all_clicks'));
+localStorage.getItem(all_clicks);
 coin.addEventListener("click", counter);
 coin.addEventListener("click", () => lvlCounter(num));
 
 function counter() {
 	event.preventDefault();
+	all_clicks += 1
+
 	if (localStorage.getItem('skin') === '1') {
 		count.innerHTML = ++num;
 	} else if (localStorage.getItem('skin') === '2') {
@@ -270,12 +271,13 @@ function counter() {
 		count.innerHTML = num;
 	}
 	localStorage.setItem('clicks', num);
+
 	update_bal();
 }
 
-function lvlCounter(num) {
-	let lvl = 0
+let maxlvl = localStorage.getItem('maxlvl') || '1 LVL';
 
+function lvlCounter(num) {
 	const levels = [
 		{ max: 500, text: '1 LVL' },
 		{ max: 2000, text: '2 LVL' },
@@ -290,28 +292,82 @@ function lvlCounter(num) {
 		{ max: Infinity, text: 'MAX LVL' }
 	];
 
-	const lvlElement = document.querySelector('.lvl');
+	let currentLvl = '1 LVL';
 
 	for (const level of levels) {
 		if (num < level.max) {
-			lvlElement.textContent = level.text;
-			lvl = level.text
-			break
+			currentLvl = level.text;
+			break;
 		}
 	}
 
-	console.log( 'Монеток:', num, '| Уровень:', lvl )
+	const lvlElement = document.querySelector('.lvl');
+	lvlElement.textContent = currentLvl;
+
+	let savedMaxLvl = localStorage.getItem('maxlvl') || '1 LVL';
+	if (currentLvl !== savedMaxLvl) {
+		if (levels.find(level => level.text === currentLvl).max > levels.find(level => level.text === savedMaxLvl).max) {
+			localStorage.setItem('maxlvl', currentLvl);
+			savedMaxLvl = currentLvl;
+		}
+	}
+
+	console.log('Монеток:', num, '| Уровень:', currentLvl);
 }
 
-/*----------------- tasks  -----------------*/
+/*----------------- stats  -----------------*/
+let time__stats = document.getElementById('time__stats');
+let money__stats = document.getElementById('money__stats');
 
-let tasks1__week = document.getElementById('tasks1__week');
-let tasks2__week = document.getElementById('tasks2__week');
+localStorage.getItem("maxMoney")
 
-let tasks1__day = document.getElementById('tasks1__day');
-let tasks2__day = document.getElementById('tasks2__day');
-let tasks3__day = document.getElementById('tasks3__day');
-let tasks4__day = document.getElementById('tasks4__day');
+window.onload = () => {
+	maxlvl = localStorage.getItem('maxlvl') || '1 LVL';
+	document.getElementById('LVL__stats').textContent = maxlvl;
+};
+
+function formatTimeUnit(unit) {
+	return unit < 10 ? '0' + unit : unit;
+}
+
+function startTimer() {
+	let seconds = parseInt(localStorage.getItem('timer')) || 0;
+	setInterval(() => {
+		seconds++;
+		localStorage.setItem('timer', seconds);
+
+		let hours = Math.floor(seconds / 3600);
+		let minutes = Math.floor((seconds % 3600) / 60);
+		let secs = seconds % 60;
+
+		time__stats.textContent = `${formatTimeUnit(hours)}:${formatTimeUnit(minutes)}:${formatTimeUnit(secs)}`;
+	}, 1000);
+}
+
+function updateStats() {
+	setInterval(() => {
+		localStorage.setItem('all_clicks', all_clicks);
+		clicks__stats.textContent = all_clicks;
+		let maxlvl = localStorage.getItem('maxlvl') || '1 LVL';
+		LVL__stats.textContent = maxlvl;
+
+		function updateMaxMoney(num) {
+			let maxMoney = parseInt(localStorage.getItem("maxMoney")) || 0;
+
+			if (num > maxMoney) {
+				money__stats.textContent = num;
+				localStorage.setItem("maxMoney", num);
+			} else {
+				money__stats.textContent = maxMoney;
+			}
+		}
+		updateMaxMoney(num)
+	}, 100);
+}
+
+
+updateStats();
+startTimer();
 
 /*----------------- reset  -----------------*/
 
@@ -361,6 +417,7 @@ let single_promo = [
 	{ 'promo': 'wetwix', 'clicks': 1000},
 	{ 'promo': 'A5Mine', 'clicks': 1000},
 	{ 'promo': 'RELEASE!', 'clicks': 2000},
+	{ 'promo': 'SergoIndustries', 'clicks': 2500 },
 	{ 'promo': 'SDFMVBK8AB2M', 'clicks': 2500},
 	{ 'promo': 'SDFASVSSSGGD', 'clicks': 2500},
 	{ 'promo': 'ASKJLFNMVSAL', 'clicks': 2500},
