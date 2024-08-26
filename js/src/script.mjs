@@ -33,12 +33,14 @@ function toggleShop() {
     img__default.classList.toggle("hide");
     img__bro.classList.toggle("hide");
     windShop.classList.toggle("hide");
+	shop.classList.toggle("btn_active");
 }
 
 function toggleStats() {
     img__bro.classList.toggle("hide");
     img__default.classList.toggle("hide");
     windStats.classList.toggle("hide");
+	stats.classList.toggle("btn_active");
 }
 
 function togglePromo() {
@@ -48,11 +50,13 @@ function togglePromo() {
 	correct.classList.add('hide');
 	incorrect.classList.add('hide');
 	promoInput.value = "";
+	promo.classList.toggle("btn_active");
 }
 function toggleReset() {
 	img__default.classList.toggle("hide");
 	img__bro.classList.toggle("hide");
 	windReset.classList.toggle("hide");
+	reset.classList.toggle("btn_active");
 }
 
 /*----------------- shop -----------------*/

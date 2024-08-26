@@ -3,7 +3,8 @@
     display: block;
     width: 400px;
     height: 750px;
-    background-color: var(--color-white);
+    background-image: linear-gradient(to bottom, var(--color-white), var(--color-brown-60));
+    /*background-color: var(--color-brown-60); */
     box-shadow: 0 15px 35px rgba(0,0,0,0.5);
     border-radius: 20px;
     padding: 5px 10px;
