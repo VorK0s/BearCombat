@@ -15,8 +15,10 @@ let windStats = document.getElementById('stats__wind');
 let windPromo = document.getElementById('promo__wind');
 let windReset = document.getElementById('reset__wind');
 
+let reloadpage = 0;
+
 shop.addEventListener("click", toggleShop);
-btnExit.addEventListener("click", toggleShop); 
+btnExit.addEventListener("click", toggleShop);
 stats.addEventListener("click", toggleStats);
 btnExit2.addEventListener("click", toggleStats);
 promo.addEventListener("click", togglePromo);
@@ -30,6 +32,10 @@ function toggleShop() {
     img__bro.classList.toggle("hide");
     windShop.classList.toggle("hide");
 	shop.classList.toggle("btn_active");
+	if (reloadpage == 0) {
+		alert("ПЕРЕД ПОКУПКОЙ СКИНА НА МЕДВЕДЯ ОБНОВИТЕ СТРАНИЦУ! Я НЕ ЗНАЮ С ЧЕМ ЭТО СВЯЗАНО, НО БЕЗ ОБНОВЛЕНИЕ ОН НЕ КУПИТСЯ");
+		reloadpage = 1;
+	}
 }
 
 function toggleStats() {
@@ -137,64 +143,65 @@ function add_visual_purchased_skin() {
 	}
 
 }
-function buy_and_set_skin( skin_id ) {
-	console.log('ВЫБРАНО | Медведь: ', storage__all_skins[skin_id - 1]['name'] ,' | Уровень: ', skin_id);
+function buy_and_set_skin(skin_id) {
+	console.log('Function started: buy_and_set_skin');
+	console.log('Skin ID:', skin_id);
 
-	equiped__default.classList.remove('product__equiped');
-	equiped__bro.classList.remove('product__equiped');
-	equiped__cosplay.classList.remove('product__equiped');
-	equiped__miner.classList.remove('product__equiped');
-	equiped__maid.classList.remove('product__equiped');
-	equiped__businessMan.classList.remove('product__equiped');
+	const skinElements = [
+		equiped__default,
+		equiped__bro,
+		equiped__cosplay,
+		equiped__miner,
+		equiped__maid,
+		equiped__businessMan
+	];
 
+	skinElements.forEach((element) => {
+		element.classList.remove('product__equiped');
+	});
+
+	console.log('Current open skins:', storage__open_skins);
+	console.log('Current currency (clicks):', storage__clicks);
+	console.log('Skin cost:', storage__all_skins[skin_id - 1]['cost']);
 
 	if (storage__open_skins.includes(skin_id)) {
-		console.log( 'ЗАШИБИСЬ | Нашли' )
+		console.log('Skin already purchased');
 
 		localStorage.setItem('skin', skin_id);
 
-		if (skin_id === 1) {
-			equiped__default.classList.add('product__equiped');
-		}
-		else if (skin_id === 2) {
-			equiped__bro.classList.add('product__equiped');
-		}
-		else if (skin_id === 3) {
-			equiped__cosplay.classList.add('product__equiped');
-		}
-		else if (skin_id === 4) {
-			equiped__miner.classList.add('product__equiped');
-		}
-		else if (skin_id === 5) {
-			equiped__maid.classList.add('product__equiped');
-		}
-		else if (skin_id === 6) {
-			equiped__businessMan.classList.add('product__equiped');
-		}
-	}
-	else {
-		console.log( 'ОШИБКА | Не куплено ещё' )
+		skinElements[skin_id - 1].classList.add('product__equiped');
+		console.log('Equipped skin:', skin_id);
+	} else {
+		console.log('Skin not purchased yet');
+		window.location.reload();
 
-		if (storage__all_skins[skin_id - 1]['cost'] <= storage__clicks ) {
-			console.log('ПОКУПКА |  Медведь: ', storage__all_skins[skin_id - 1]['name'], ' | Стоимость: ', storage__all_skins[skin_id - 1]['cost'])
 
-			storage__clicks = storage__clicks - storage__all_skins[skin_id - 1]['cost']
+		if (storage__all_skins[skin_id - 1]['cost'] <= storage__clicks) {
+			console.log('Enough currency. Proceeding to purchase...');
+
+			storage__clicks -= storage__all_skins[skin_id - 1]['cost'];
 			localStorage.setItem('clicks', storage__clicks);
-			num = Number(localStorage.getItem('clicks'));
 
-			storage__open_skins.push(skin_id)
-			localStorage.setItem('open_skins', JSON.stringify(storage__open_skins))
+			storage__open_skins.push(skin_id);
+			localStorage.setItem('open_skins', JSON.stringify(storage__open_skins));
 
-			buy_and_set_skin(skin_id);
+			console.log('Skin purchased and added to open skins');
+			console.log('Updated currency (clicks):', storage__clicks);
+
+			skinElements.forEach((element, index) => {
+				if (index + 1 === skin_id) {
+					element.classList.add('product__equiped');
+				}
+			});
 			add_visual_purchased_skin();
 			update_bal();
-		}
-		else {
-			console.log( 'ОШИБКА | Не хватает МёдоБаксов на покупку' )
+		} else {
+			console.log('Not enough currency for purchase');
 		}
 	}
 
-	set_visual_skin()
+	set_visual_skin();
+	console.log('Visual elements updated');
 }
 
 function update_bal() {
